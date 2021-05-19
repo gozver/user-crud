@@ -11,7 +11,9 @@ $(() => {
 function getUsersRequest() {
   $.ajax({
     url: '/users',
-    success: (users) => getUsers(users)
+    success: (users) => {
+      getUsers(users)
+    }
   });
 }
 
@@ -45,7 +47,7 @@ function createUserRequest() {
 }
 
 // general functions
-function insertRow(user) {
+export function insertRow(user) {
   tbody.append(`
     <tr>
       <td id="id">
