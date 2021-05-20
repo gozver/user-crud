@@ -35,7 +35,7 @@ app.post('/users', (req, res) => {
 });
 
 // static files
-app.use(express.static(path.join(__dirname, 'app')))
+app.use(express.static(path.join(__dirname, 'src')));
 app.use('/public', express.static('public'));
 
 app.listen(app.get('port'), ()  => {

@@ -1,0 +1,21 @@
+body {
+  background: #eee;
+
+  .container {
+    .ttl-ctr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-ctr {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      button {
+        margin-left: 5px;
+      }
+    }
+  }
+}
