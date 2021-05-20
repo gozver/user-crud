@@ -6,16 +6,20 @@ $(() => {
   getUsersRequest();
   goToEditUser();
   
-  $('table').on('click', '.update-btn', function() {
+  $('table').on('click', '.btn-update', function () {
+    $('.btn-update').blur();
+
     let row = $(this).closest('tr');
-    let id = row.find('.id').text();
-    console.log('id: ' + id);
+    let id = row.find('.id').children().text();
+    
+    window.location.href = `./edit-user.html?id=${id}`;
   });
 
-  $('table').on('click', '.delete-btn', function() {
+  $('table').on('click', '.btn-delete', function () {
+    $('.btn-delete').blur();
+
     let row = $(this).closest('tr');
-    let id = row.find('.id').text();
-    console.log('id: ' + id);
+    let id = row.find('.id').children().text();
   });
 });
 
@@ -39,15 +43,21 @@ function getUsers(users) {
 function insertRow(user) {
   tbody.append(`
     <tr>
-      <td class="id">${user.id}</td>
-      <td class="name">${formatString(user.name)}</td>
-      <td class="email">${user.email.toLowerCase()}</td>
+      <td class="id">
+        <p>${user.id}</p>
+      </td>
+      <td class="name">
+        <p>${formatString(user.name)}</p>
+      </td>
+      <td class="email">
+        <p>${user.email.toLowerCase()}</p>
+      </td>
       <td>
-        <button type="submit" class="btn btn-primary update-btn">
+        <button type="submit" class="btn btn-primary btn-update">
           <i class="fa fa-pencil" aria-hidden="true"></i>
         </button>
 
-        <button type="button" class="btn btn-danger delete-btn">
+        <button type="button" class="btn btn-danger btn-delete">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
       </td>
