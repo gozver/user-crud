@@ -8,6 +8,6 @@ This project was generated with:
 [Node.js](https://material.angular.io/) version 14.17.0.
 
 ## Development server
-Run `npm i` to generate the node_modules folder.
-Run `npm run dev` for a dev server.
-Navigate to `http://localhost:3000/`.
+Run `npm i` to generate the node_modules folder.<br/>
+Run `npm run dev` for a dev server.<br/>
+Navigate to `http://localhost:3000/`.<br/>
