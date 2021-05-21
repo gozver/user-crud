@@ -13,25 +13,42 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// routes
+// route get users
 app.get('/users', (req, res) => {
   res.json(db.users);
 });
 
-app.post('/users', (req, res) => {
+// route get user
+app.get('/user/:id', (req, res) => {
+  const { id } = req.params;
+
+  let user = db.users.find(user => user.id == id);
+
+  res.json(user);
+});
+
+// route create user
+app.post('/user', (req, res) => {
   const { name, email } = req.body;
 
-  db.users.push({ 
-    id: db.users.length + 1,
-    name,
-    email 
+  db.users.push({ id: db.users.length + 1, name, email });
+
+  res.send('User created successfully');
+});
+
+// route update user
+app.put('/user/:id', (req, res) => {
+  const { id } = req.params;
+  const { name, email } = req.body;
+
+  db.users.forEach((user, i) => {
+    if (user.id === parseInt(id)) {
+      user.name = name;
+      user.email = email;
+    }
   });
 
-  res.send({ 
-    id: db.users.length + 1, 
-    name,
-    email
-  });
+  res.send('User updated successfully');
 });
 
 // static files
