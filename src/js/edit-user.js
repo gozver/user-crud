@@ -6,11 +6,13 @@ let id = null;
 $(() => {
   edit = isEditing();
   
-  if (edit) {
+  if (!edit) {
+    createUser();
+  } else {
+    $('#button').empty().append('<i class="fa fa-pencil" aria-hidden="true"></i>');
+
     getUser();
     updateUser();
-  } else {
-    createUser();
   }
     
   goToIndex();

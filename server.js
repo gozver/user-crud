@@ -51,6 +51,15 @@ app.put('/user/:id', (req, res) => {
   res.send('User updated successfully');
 });
 
+// route delete user
+app.delete('/user/:id', (req, res) => {
+  const { id } = req.params;
+  
+  db.users = db.users.filter(user => user.id !== parseInt(id));
+
+  res.send(db.users);
+});
+
 // static files
 app.use(express.static(path.join(__dirname, 'src')));
 app.use('/public', express.static('public'));

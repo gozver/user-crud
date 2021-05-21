@@ -42,7 +42,26 @@ function deleteUser() {
     $('.btn-delete').blur();
 
     let row = $(this).closest('tr');
-    let id = row.find('.id').children().text();
+    let name = row.find('.name').children().text();
+
+    Swal.fire({
+      icon: 'warning',
+      text: `Do you want to delete ${name}?`
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let row = $(this).closest('tr');
+        let id = row.find('.id').children().text();
+
+        $.ajax({
+          url: `/user/${id}`,
+          method: 'DELETE',
+          success: (users) => {
+            tbody.empty();
+            users.forEach(user => insertRow(user));
+          }
+        });
+      }
+    });
   });
 }
 

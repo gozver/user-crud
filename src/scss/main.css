@@ -41,4 +41,8 @@ body .container table th p, body .container table td p {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.swal-button {
+  width: 100px;
+}
 /*# sourceMappingURL=main.css.map */
